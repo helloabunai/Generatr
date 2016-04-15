@@ -1,0 +1,23 @@
+<!--DTD configuration defines the structure of the XML loci input.
+
+Molecular Cell & Systems Biology
+University of Glasgow, Scotland
+alastair.maxwell@glasgow.ac.uk
+
+>>>> http://www.xmlfiles.com/dtd/dtd_elements.asp-->
+
+<!-- DATA ELEMENT -->
+<!ELEMENT data (loci+)>
+
+<!-- LOCI ELEMENT -->
+<!ELEMENT loci (input+)>
+<!ATTLIST loci label CDATA #REQUIRED>
+
+<!-- INPUT ELEMENT -->
+<!ELEMENT input (#PCDATA)>
+<!ATTLIST input type CDATA #REQUIRED>
+<!ATTLIST input flank CDATA #IMPLIED>
+<!ATTLIST input unit CDATA #IMPLIED>
+<!ATTLIST input start CDATA #IMPLIED>
+<!ATTLIST input end CDATA #IMPLIED>
+<!ATTLIST input sequence CDATA #IMPLIED>

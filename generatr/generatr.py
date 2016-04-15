@@ -1,8 +1,89 @@
+##
+## Generic imports
+import os
+import sys
+import argparse
+import logging as log
+import pkg_resources
 from itertools import product
+
+##
+## Subpackage/s??
+from .dtdvalidate.validation import Colour as clr
+from .dtdvalidate.validation import ConfigReader
 
 class Generatr:
 	def __init__(self):
+
+		"""
+		Simple data scraping script which takes a sam file as input
+		and collects the top 3 references in regards to aligned read count.
+		"""
+		##
+		## Package data
+		self.package_exampleXML = pkg_resources.resource_filename(__name__, 'dtdvalidate/example_input.xml')
+		self.package_configDTD = pkg_resources.resource_filename(__name__, 'dtdvalidate/xml_rules.dtd')
+
+
+		##
+		## Argument parser from CLI
+		self.parser = argparse.ArgumentParser(prog='generatr',description='RefGeneratr: Dynamic multi-loci/mutli-repeat tract microsatellite sequence generator.')
+		self.parser.add_argument('-i','--input',help='Input data. Path to input XML document with desired sequence information.',nargs=1,required=True)
+		self.parser.add_argument('-o','--output',help='Output path. Specify a directory wherein your *.fa reference will be saved.',nargs=1,required=True)
+		self.parser.add_argument('-v','--verbose',help='Verbose mode. Enables terminal user feedback.',action='store_true')
+		self.args = self.parser.parse_args()
+
+		##
+		## Sets up input directories and verbose mode if requested
+		self.input_directory = self.args.input[0]
+		self.output_directory = self.args.output[0]
+		if self.args.verbose:
+			log.basicConfig(level=log.DEBUG, format="%(message)s")
+
+		##
+		## User feedback and run application
+		## Checks for appropriate input/output -- if self.iocheck() returns false, quit
+		log.info('{}{}{}{}'.format(clr.bold,'gtr__ ',clr.end,'RefGeneratr: microsatellite reference sequence generator.'))
+		log.info('{}{}{}{}'.format(clr.bold,'gtr__ ',clr.end,'alastair.maxwell@glasgow.ac.uk'))
+		if not self.iocheck():
+			log.error('{}{}{}{}'.format(clr.red,'gtr__ ',clr.end,'Exiting..'))
+			sys.exit(2)
+
+		##
+		## Each input sam will have an entry in a results dictionary which is then output to
+		## the master output folder in a single CSV file for easy interpretation
 		self.greeting = 'hi'
+
+	def iocheck(self):
+		"""
+		Checks input isfile/isXML;;	Checks exampleXML/DTD validates
+		Checks inputXML validates;; Checks output file
+		Return True if all OK, else False
+		"""
+
+		##
+		## Check that specified input is an XML document
+		if not (os.path.isfile(self.input_directory)):
+			log.error('{}{}{}{}'.format(clr.red,'gtr__ ',clr.end,'I/O: Specified input path is not a file!'))
+			return False
+		if not (self.input_directory.endswith('.xml') or self.input_directory.endswith('.XML')):
+			log.error('{}{}{}{}'.format(clr.red,'gtr__ ',clr.end,'I/O: Specified input file is not XML!'))
+			return False
+
+		##
+		## Validate exampleXML against package DTD
+		ConfigReader(self.package_configDTD, self.package_exampleXML)
+
+		##
+		## Validate input XML against package DTD
+
+		##
+		## Specified output check
+		if not (self.output_directory.endswith('.fasta') or self.output_directory.endswith('.fa') or self.output_directory.endswith('.fas')):
+			log.error('{}{}{}{}'.format(clr.red,'gtr__ ',clr.end,'I/O: Specified output path is not targetting a FASTA file!'))
+			return False
+
+		return True
 
 	def workflow(self):
 		print self.greeting

@@ -76,20 +76,13 @@ setup(
     # your project is installed. For an analysis of "install_requires" vs pip's
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
-    install_requires=['peppercorn',
-					  'progress',
-					  'lxml',
-					  'numpy',
-					  'prettyplotlib',
-					  'sklearn',
-					  'scipy'
-					  ],
+    install_requires=['lxml'],
 
     # These are the data files to be included in the package
 	# For GenoCall, this will be the data-sets used for machine-learning
 	# training, and generating predictive models for each 'data state'
     package_data={'sbmlcartographer': ['dtdvalidate/example_input.xml',
-									   'dtdvalidate/config.dtd']},
+									   'dtdvalidate/xml_rules.dtd']},
 
 	# Executable scripts require an entry point to allow cython to generate
 	# executables for the respective target platform. This entry point is akin

@@ -1,2 +1,2 @@
-from src.generatr.generatr import main
+from generatr import main
 main()
