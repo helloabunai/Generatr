@@ -1,6 +1,4 @@
-import os
 import sys
-import glob
 import logging as log
 from collections import defaultdict
 from xml.etree import cElementTree
@@ -128,7 +126,8 @@ class ConfigReader(object):
 		for k, v in self.config_dict.iteritems():
 			print 'KEY: ', k
 			for thing in v:
-				print 'VALUE: ', thing
+				print 'LOCI LABEL: ', thing['@label']
+				print 'LOCI DATA: ', thing['input']
 				print '\n'
 
 		##TODO validate input

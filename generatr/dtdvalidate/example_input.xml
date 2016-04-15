@@ -6,19 +6,19 @@
 
     <loci label="test_loci_one">
         <input type="fiveprime" flank="FIVEPRIMEFLANKGOESHERE"/>
-        <input type="repeat_region" unit="CAG" start="1" end="200"/>
-        <input type="intervening" sequence="INTERVENINGSEQUENCE" prior="CAG"/>
-        <input type="repeat_region" unit="CCG" start="1" end="20"/>
+        <input type="repeat_region" order="1" unit="CAG" start="1" end="200"/>
+        <input type="intervening" sequence="INTERVENINGSEQUENCE" prior="1"/>
+        <input type="repeat_region" order="2" unit="CCG" start="1" end="20"/>
         <input type="threeprime" flank="THREEPRIMEFLANKGOESHERE"/>
     </loci>
 
     <loci label="test_loci_two">
         <input type="fiveprime" flank="FIVEPRIMEFLANKGOESHERE"/>
-        <input type="repeat_region" unit="CTG" start="1" end="200"/>
-        <input type="intervening" sequence="INTERVENINGSEQUENCE" prior="CTG"/>
-        <input type="repeat_region" unit="GGTTA" start="1" end="20"/>
-        <input type="intervening" sequence="interveningtwo" prior="GGTTA"/>
-        <input type="repeat_region" unit="butts" start="1" end="5"/>
+        <input type="repeat_region" order="1" unit="CTG" start="1" end="200"/>
+        <input type="intervening" sequence="INTERVENINGSEQUENCE" prior="1"/>
+        <input type="repeat_region" order="2" unit="GGTTA" start="1" end="20"/>
+        <input type="intervening" sequence="interveningtwo" prior="2"/>
+        <input type="repeat_region" order="3" unit="butts" start="1" end="5"/>
         <input type="threeprime" flank="THREEPRIMEFLANKGOESHERE"/>
     </loci>
 

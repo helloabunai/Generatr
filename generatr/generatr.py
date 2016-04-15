@@ -24,7 +24,6 @@ class Generatr:
 		self.package_exampleXML = pkg_resources.resource_filename(__name__, 'dtdvalidate/example_input.xml')
 		self.package_configDTD = pkg_resources.resource_filename(__name__, 'dtdvalidate/xml_rules.dtd')
 
-
 		##
 		## Argument parser from CLI
 		self.parser = argparse.ArgumentParser(prog='generatr',description='RefGeneratr: Dynamic multi-loci/mutli-repeat tract microsatellite sequence generator.')

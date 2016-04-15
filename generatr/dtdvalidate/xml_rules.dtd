@@ -17,6 +17,7 @@ alastair.maxwell@glasgow.ac.uk
 <!ELEMENT input (#PCDATA)>
 <!ATTLIST input type CDATA #REQUIRED>
 <!ATTLIST input flank CDATA #IMPLIED>
+<!ATTLIST input order CDATA #IMPLIED>
 <!ATTLIST input unit CDATA #IMPLIED>
 <!ATTLIST input start CDATA #IMPLIED>
 <!ATTLIST input end CDATA #IMPLIED>
