@@ -1,0 +1,59 @@
+<!--DTD configuration defines the structure of the XML loci input.
+
+Molecular Cell & Systems Biology
+University of Glasgow, Scotland
+alastair.maxwell@glasgow.ac.uk -->
+
+<!-- CONFIG ELEMENT -->
+<!ELEMENT config          (system_init, dmpx_exec, trim_exec, genref_exec, clcmap_exec)>
+<!ATTLIST config          rawdata_directory CDATA #REQUIRED>
+<!ATTLIST config		  rfnc_directory CDATA #REQUIRED>
+<!ATTLIST config          outp_directory CDATA #REQUIRED>
+
+<!-- SYSTEM_INIT ELEMENT -->
+<!ELEMENT system_init (#PCDATA)>
+<!ATTLIST system_init disease_flag CDATA #REQUIRED>
+<!ATTLIST system_init treatment_stage CDATA #REQUIRED>
+<!ATTLIST system_init alignment_stage CDATA #REQUIRED>
+<!ATTLIST system_init genotypes_stage CDATA #REQUIRED>
+
+<!-- DMPX_EXEC ELEMENT -->
+<!ELEMENT dmpx_exec (#PCDATA)>
+<!ATTLIST dmpx_exec dmpx_data CDATA #REQUIRED>
+<!ATTLIST dmpx_exec paired_read CDATA #REQUIRED>
+<!ATTLIST dmpx_exec barcode_file CDATA #REQUIRED>
+<!ATTLIST dmpx_exec max_mismatch CDATA #IMPLIED>
+
+<!-- TRIM_EXEC ELEMENT -->
+<!ELEMENT trim_exec (#PCDATA)>
+<!ATTLIST trim_exec trim_data CDATA #REQUIRED>
+<!ATTLIST trim_exec trim_type CDATA #REQUIRED>
+<!ATTLIST trim_exec quality_threshold CDATA #IMPLIED>
+<!ATTLIST trim_exec adapter_flag CDATA #IMPLIED>
+<!ATTLIST trim_exec adapter CDATA #IMPLIED>
+
+<!-- GENREF_EXEC ELEMENT -->
+<!ELEMENT genref_exec (#PCDATA)>
+<!ATTLIST genref_exec generate_ref CDATA #REQUIRED>
+<!ATTLIST genref_exec fiveprime CDATA #IMPLIED>
+<!ATTLIST genref_exec min_cag CDATA #IMPLIED>
+<!ATTLIST genref_exec max_cag CDATA #IMPLIED>
+<!ATTLIST genref_exec intervening CDATA #IMPLIED>
+<!ATTLIST genref_exec min_ccg CDATA #IMPLIED>
+<!ATTLIST genref_exec max_ccg CDATA #IMPLIED>
+<!ATTLIST genref_exec threeprime CDATA #IMPLIED>
+
+<!-- CLCMAP_EXEC ELEMENT -->
+<!ELEMENT clcmap_exec (#PCDATA)>
+<!ATTLIST clcmap_exec cpu_threads CDATA #REQUIRED>
+<!ATTLIST clcmap_exec paired_read CDATA #REQUIRED>
+<!ATTLIST clcmap_exec mismatch_cost CDATA #IMPLIED>
+<!ATTLIST clcmap_exec gap_cost CDATA #IMPLIED>
+<!ATTLIST clcmap_exec delete_cost CDATA #IMPLIED>
+<!ATTLIST clcmap_exec max_align CDATA #IMPLIED>
+<!ATTLIST clcmap_exec similar_score CDATA #IMPLIED>
+<!ATTLIST clcmap_exec length_frac CDATA #IMPLIED>
+
+
+
+

@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<data>
+	<loci label="test_loci_one">
+		<five_prime_flank = "fiveprimeflank">
+		<repeat_region = "CAG">
+			<range_start> 1 </range_start>
+			<range_end> 200 </range_end>
+		</repeat_region>
+		<intervening = "CAACAGCCGCTG"/>
+		<repeat_region = "CCG">
+			<range_start> 1 </range_start>
+			<range_end> 20 </range_end>
+		</repeat_region>
+		<three_prime_flank = "threeprimeflank">
+	</loci>
+	
+	<loci label="test_loci_two">
+		<five_prime_flank = "fiveprimeflank">
+		<repeat_region = "CTG">
+			<range_start> 1 </range_start>
+			<range_end> 50 </range_end>
+		</repeat_region>
+		<intervening = "CAACAACAGCAA"/>
+		<repeat_region = "GGA">
+			<range_start> 1 </range_start>
+			<range_end> 20 </range_end>
+		</repeat_region>
+		<repeat_region = "ATA">
+			<range_start> 0 </range_start>
+			<range_end> 50 </range_end>
+		</repeat_region>
+		<repeat_region = "GGCAT">
+			<range_start> 10 </range_start>
+			<range_end> 15 </range_end>
+		</repeat_region>
+		<intervening = "TTGTTGCAACAG"/>
+		<repeat_region = "GAT">
+			<range_start> 3 </range_start>
+			<range_end> 15 </range_end>
+		</repeat_region>
+		<three_prime_flank = "threeprimeflank">
+	</loci>
+	
+	<loci label="test_loci_three">
+		<five_prime_flank = "fiveprimeflank">
+		<repeat_region = "CTG">
+			<range_start> 1 </range_start>
+			<range_end> 200 </range_end>
+		</repeat_region>
+		<intervening = "INTERVENINGHAHAHAHauefhajkgnp"/>
+		<repeat_region = "CCG">
+			<range_start> 1 </range_start>
+			<range_end> 20 </range_end>
+		</repeat_region>
+		<three_prime_flank = "threeprimeflank">
+	</loci>
+</data>
