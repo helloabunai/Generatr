@@ -1,4 +1,4 @@
-RefGeneratr: Dynamic multi-loci/mutli-repeat tract microsatellite sequence generator
+RefGeneratr: Dynamic multi-loci/multi-repeat tract microsatellite reference sequence generator
 =========================================================
 SBMLCartographer is a python package which utilises SBML API's to track the transition
 of Carbon-13 atoms between biomass reactions in order to analysis metabolic flux (typically in Yeast).
