@@ -19,7 +19,7 @@ Pre-release status.
 Tidying up algorithm into distributable.
 
 
-Installation Prerequisites
+Installation Prerequisitesa
 ==========================
 Work in progress, so don't count on this being filled out any time soon.
 Should just be..
