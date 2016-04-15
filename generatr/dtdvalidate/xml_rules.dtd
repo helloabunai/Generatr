@@ -21,3 +21,4 @@ alastair.maxwell@glasgow.ac.uk
 <!ATTLIST input start CDATA #IMPLIED>
 <!ATTLIST input end CDATA #IMPLIED>
 <!ATTLIST input sequence CDATA #IMPLIED>
+<!ATTLIST input prior CDATA #IMPLIED>
