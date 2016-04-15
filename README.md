@@ -23,9 +23,13 @@ Installation Prerequisites
 ==========================
 Work in progress, so don't count on this being filled out any time soon.
 Should just be..
+
     $ python setup.py install
+
 or
+
     $ pip install RefGeneratr
+
 ..when development is complete.
 
 
