@@ -153,9 +153,9 @@ class Generatr:
 			## Scraping repeat regions
 			if sequence_parameters['@type'] == 'repeat_region':
 				current_region = {'unit':sequence_parameters['@unit'],
-								  'start':sequence_parameters['@start'],
-								  'end':sequence_parameters['@end'],
-								  'order':sequence_parameters['@order']}
+								'start':sequence_parameters['@start'],
+								'end':sequence_parameters['@end'],
+								'order':sequence_parameters['@order']}
 				input_repeat_regions.append(current_region)
 
 			##
@@ -166,10 +166,10 @@ class Generatr:
 				intervening_regions.append(current_interv)
 
 		locus_dictionary = {'label': loci_label,
-						   '5P_flank': fiveprime_flank,
-						   'repeat_regions': input_repeat_regions,
-						   'intervening_regions': intervening_regions,
-						   '3P_flank': threeprime_flank}
+							'5P_flank': fiveprime_flank,
+							'repeat_regions': input_repeat_regions,
+							'intervening_regions': intervening_regions,
+							'3P_flank': threeprime_flank}
 
 		return locus_dictionary
 
