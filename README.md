@@ -30,8 +30,10 @@ Here's how to use generatr:
     $ generatr [-v/--verbose] [-i/--input <Path to input.xml>] [-o/--output <Desired *.fasta file output>]
 
 -v enables terminal user feedback.
--i is a path to an XML file containing your desired information, which adheres to the requirements outlined below
--o is a path to your desired output *.fasta/*.fa/*.fas file
+
+-i is a path to an XML file containing your desired information, which adheres to the requirements outlined below.
+
+-o is a path to your desired output *.fasta/*.fa/*.fas file.
 
 XML Requirements
 =====
