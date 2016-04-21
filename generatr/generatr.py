@@ -245,7 +245,7 @@ class Generatr:
 			## Combine data, append to entire locus' string
 			reference_label = loci_label + haplotype_label
 			reference_sequence = '{}{}{}'.format(five_prime, nonflank_sequences, three_prime)
-			reference_string = '{}\n{}'.format(reference_label, reference_sequence)
+			reference_string = '{}\n{}\n\n'.format(reference_label, reference_sequence)
 			complete_reference_string += reference_string
 
 		return complete_reference_string
