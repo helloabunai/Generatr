@@ -46,7 +46,7 @@ class ConfigReader(object):
 		## Check config vs dtd, parse info to dictionary, validate vs ruleset
 		self.validate_against_dtd()
 		self.set_dictionary()
-		self.validate_config()
+		self.trigger = self.validate_config()
 
 	def validate_against_dtd(self):
 
@@ -75,8 +75,6 @@ class ConfigReader(object):
 		a python dictionary {key: value}. This dictionary will be used for variables
 		within the pipeline. Recursion adapted from http://stackoverflow.com/a/9286702
 		"""
-
-		##TODO generate proper loci-based dictionary (one key atm???)
 
 		def recursive_generation(t):
 
@@ -121,59 +119,83 @@ class ConfigReader(object):
 		Method which validates the configuration file's contents.
 		If all pass, guarantees that the settings dictionary is full of valid settings!
 		"""
+		valid_types = ['fiveprime','repeat_region','intervening','threeprime']
+		valid_bases = ['A','T','G','C','U','N']
+
+		def parameter_checker(input_data):
+
+			subtrigger = False
+
+			for sequence_parameters in input_data:
+
+				## Check type integrity
+				param_type = sequence_parameters['@type']
+				if not param_type in valid_types:
+					log.error('{}{}{}{}'.format(Colour.red,'gtr__ ',Colour.end,'CFG: Invalid parameter type detected in XML config.'))
+
+				##
+				## Test five prime flank integrity
+				if param_type == 'fiveprime':
+					fiveprime_flank = sequence_parameters['@flank']
+					for character in fiveprime_flank:
+						if not character in valid_bases:
+							log.error('{}{}{}{}'.format(Colour.red,'gtr__ ',Colour.end,'CFG: Invalid base character detected in five prime flank.'))
+							subtrigger=True
+
+				##
+				## Test repeat region(s) integrity
+				if param_type == 'repeat_region':
+					repeat_region = sequence_parameters['@unit']
+					for character in repeat_region:
+						if not character in valid_bases:
+							log.error('{}{}{}{}'.format(Colour.red,'gtr__ ',Colour.end,'CFG: Invalid base character detected in repeat unit.'))
+							subtrigger=True
+
+					region_start = sequence_parameters['@start']
+					region_end = sequence_parameters['@end']
+					region_order = sequence_parameters['@order']
+					for region in [region_start, region_end, region_order]:
+						if not region.isdigit():
+							log.error('{}{}{}{}'.format(Colour.red,'gtr__ ',Colour.end,'CFG: Non-integer character detected in repeat region start/end/order.'))
+							subtrigger=True
+
+				##
+				## Test intervening sequence(s) integrity
+				if param_type == 'intervening':
+					intevening_seq = sequence_parameters['@sequence']
+					for character in intevening_seq:
+						if not character in valid_bases:
+							log.error('{}{}{}{}'.format(Colour.red,'gtr__ ',Colour.end,'CFG: Invalid base character found in intervening sequence.'))
+							subtrigger=True
+
+				##
+				## Test three prime flank integrity
+				if param_type == 'threeprime':
+					threeprime_flank = sequence_parameters['@flank']
+					for character in threeprime_flank:
+						if not character in valid_bases:
+							log.error('{}{}{}{}'.format(Colour.red,'gtr__ ',Colour.end,'CFG: Invalid base character detected in three prime flank.'))
+							subtrigger=True
+
+			return subtrigger
+
 		trigger = False
+		for k,v in self.config_dict.iteritems():
 
-		for k, v in self.config_dict.iteritems():
-			print 'KEY: ', k
-			for thing in v:
-				print 'LOCI LABEL: ', thing['@label']
-				print 'LOCI DATA: ', thing['input']
-				print '\n'
+			if type(v) == dict:
+				loci_data = v['input']
+				trigger = parameter_checker(loci_data)
 
-		##TODO validate input
+			if type(v) == list:
+				for loci_entry in v:
+					loci_data = loci_entry['input']
+					trigger = parameter_checker(loci_data)
 
+		if trigger:
+			log.error('{}{}{}{}'.format(Colour.red,'gtr__ ',Colour.end,'CFG: XML parameter validation failure. Exiting.'))
+			sys.exit(2)
+		else:
+			log.info('{}{}{}{}'.format(Colour.green,'gtr__ ',Colour.end,'CFG: XML Validation success!'))
 
-		###
-		### Main configuration instance settings
-		#
-		#data_directory = self.config_dict['@data_dir']
-		#if not os.path.exists(data_directory):
-		#	log.error('{}{}{}{}'.format(Colour.red, 'shd__', Colour.end, 'XML Config: Specified data directory could not be found.'))
-		#	trigger = True
-		#for fqfile in glob.glob(os.path.join(data_directory, '*')):
-		#	if not (fqfile.endswith('.fq') or fqfile.endswith('.fastq') or fqfile.endswith('.fq.gz') or fqfile.endswith('.fastq.gz')):
-		#		log.error('{}{}{}{}'.format(Colour.red, 'shd__ ', Colour.end, 'XML Config: Non FastQ/GZ data detected in specified input directory.'))
-		#		trigger = True
-		#reference_directory = self.config_dict['@reference_file']
-		#if not os.path.isfile(reference_directory):
-		#	log.error('{}{}{}{}'.format(Colour.red, 'shd__ ', Colour.end, 'XML Config: Specified reference file could not be found.'))
-		#	trigger = True
-		#if not (reference_directory.endswith('.fa') or reference_directory.endswith('.fas')):
-		#	log.error('{}{}{}{}'.format(Colour.red, 'shd__ ', Colour.end, 'XML Config: Specified reference file is not an fa/fas file.'))
-		#	trigger = True
-		#
-		###
-		### Instance flag settings
-		#
-		#sequence_qc_flag = self.config_dict['instance_flags']['@quality_control']
-		#if not (sequence_qc_flag == 'True' or sequence_qc_flag == 'False'):
-		#	log.error('{}{}{}{}'.format(Colour.red, 'shd__ ', Colour.end, 'XML Config: Sequence Quality control flag is not set to True/False.'))
-		#	trigger = True
-		#alignment_flag = self.config_dict['instance_flags']['@sequence_alignment']
-		#if not (alignment_flag == 'True' or alignment_flag == 'False'):
-		#	log.error('{}{}{}{}'.format(Colour.red, 'shd__ ', Colour.end, 'XML Config: Sequence Alignment flag is not set to True/False.'))
-		#	trigger = True
-		#genotype_flag = self.config_dict['instance_flags']['@genotype_prediction']
-		#if not (genotype_flag == 'True' or genotype_flag == 'False'):
-		#	log.error('{}{}{}{}'.format(Colour.red, 'shd__ ', Colour.end, 'XML Config: Genotype Prediction control flag is not True/False.'))
-		#	trigger = True
-		#
-		#if sequence_qc_flag == 'True' and alignment_flag == 'False':
-		#	log.error('{}{}{}{}'.format(Colour.red, 'shd__ ', Colour.end, 'XML Config: Quality control selected, but not alignment. Invalid selection.'))
-		#	trigger = True
-		#
-		#if trigger:
-		#	log.error('{}{}{}{}'.format(Colour.red, 'shd__ ', Colour.end, 'XML Config: Failure, exiting.'))
-		#	sys.exit(2)
-		#else:
-		#	log.info('{}{}{}{}'.format(Colour.green, 'shd__ ', Colour.end, 'XML Config: Parsing parameters successful!'))
+	def return_dict(self):
+		return self.config_dict

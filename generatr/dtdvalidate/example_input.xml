@@ -5,21 +5,21 @@
      Follow the example input in the documentation if you are unsure.-->
 
     <loci label="test_loci_one">
-        <input type="fiveprime" flank="FIVEPRIMEFLANKGOESHERE"/>
-        <input type="repeat_region" order="1" unit="CAG" start="1" end="200"/>
-        <input type="intervening" sequence="INTERVENINGSEQUENCE" prior="1"/>
-        <input type="repeat_region" order="2" unit="CCG" start="1" end="20"/>
-        <input type="threeprime" flank="THREEPRIMEFLANKGOESHERE"/>
+        <input type="fiveprime" flank="AAAAAAAAAAA"/>
+        <input type="repeat_region" order="1" unit="CAG" start="1" end="5"/>
+        <input type="intervening" sequence="TTTTTTTTTT" prior="1"/>
+        <input type="repeat_region" order="2" unit="CCG" start="1" end="5"/>
+        <input type="threeprime" flank="GGGGGGGGGGG"/>
     </loci>
 
     <loci label="test_loci_two">
-        <input type="fiveprime" flank="FIVEPRIMEFLANKGOESHERE"/>
+        <input type="fiveprime" flank="CCCC"/>
         <input type="repeat_region" order="1" unit="CTG" start="1" end="200"/>
-        <input type="intervening" sequence="INTERVENINGSEQUENCE" prior="1"/>
+        <input type="intervening" sequence="TTTTTTTTTT" prior="1"/>
         <input type="repeat_region" order="2" unit="GGTTA" start="1" end="20"/>
-        <input type="intervening" sequence="interveningtwo" prior="2"/>
-        <input type="repeat_region" order="3" unit="butts" start="1" end="5"/>
-        <input type="threeprime" flank="THREEPRIMEFLANKGOESHERE"/>
+        <input type="intervening" sequence="TTTTTTTTTT" prior="2"/>
+        <input type="repeat_region" order="3" unit="CCC" start="1" end="5"/>
+        <input type="threeprime" flank="TTTTT"/>
     </loci>
 
     <!-- End of information !! Ensure all desired information is
