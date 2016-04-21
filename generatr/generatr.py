@@ -74,7 +74,7 @@ class Generatr:
 					self.loci_strings.append(locus_string)
 				self.write_output()
 
-		log.info('bye')
+		log.info('{}{}{}{}'.format(clr.bold,'gtr__ ',clr.end,'Finished processing.'))
 
 	def iocheck(self):
 		"""
