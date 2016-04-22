@@ -9,8 +9,7 @@ Generatr requires lxml, which setuptools should install for you during setup.
 
 What's New
 ==========
-Pre-release status.
-Tidying up algorithm into distributable.
+Everything
 
 
 Installation Prerequisites
