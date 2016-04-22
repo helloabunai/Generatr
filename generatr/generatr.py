@@ -3,6 +3,7 @@
 import os
 import sys
 import argparse
+import tempfile
 import logging as log
 import pkg_resources
 from itertools import product
@@ -53,7 +54,7 @@ class Generatr:
 		## Loop over every loci that we scraped from XML
 		## Extract info and format tailor to generator methods
 		## Save reference string to structure, when all complete, pass to file writer
-		self.loci_strings = []
+		self.temp_loci_files = []
 		for k,v in self.input_dictionary.iteritems():
 
 			##
@@ -62,7 +63,7 @@ class Generatr:
 				log.info('{}{}{}{}'.format(clr.bold,'gtr__ ',clr.end,'Detected a single locus. Processing..'))
 				locus_dictionary = self.loci_collector(v)
 				locus_string = self.generate_loci_reference(locus_dictionary)
-				self.loci_strings.append(locus_string)
+				self.temporary_file_creation(locus_string)
 				self.write_output()
 			##
 			## Multi loci mode, structure returned a list of dictionaries
@@ -71,7 +72,7 @@ class Generatr:
 				for raw_locus in v:
 					locus_dictionary = self.loci_collector(raw_locus)
 					locus_string = self.generate_loci_reference(locus_dictionary)
-					self.loci_strings.append(locus_string)
+					self.temporary_file_creation(locus_string)
 				self.write_output()
 
 		log.info('{}{}{}{}'.format(clr.bold,'gtr__ ',clr.end,'Finished processing.'))
@@ -250,12 +251,21 @@ class Generatr:
 
 		return complete_reference_string
 
+	def temporary_file_creation(self, locus_string):
+
+		temp_loci_file = tempfile.NamedTemporaryFile(delete=False)
+		temp_loci_file.write(locus_string)
+		temp_loci_file.flush()
+		self.temp_loci_files.append(temp_loci_file)
+
 	def write_output(self):
 
 		with open(self.output_directory, 'w') as outfile:
-			for loci_string in self.loci_strings:
-				outfile.write(loci_string)
+			for loci in self.temp_loci_files:
+				loci.seek(0)
+				outfile.write(loci.read())
 				outfile.write('\n')
+				loci.close()
 		outfile.close()
 
 def main():

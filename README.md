@@ -14,12 +14,19 @@ Everything
 
 Installation Prerequisites
 ==========================
-For now, download the source and run the following:
+
+Assuming that lxml is installed, or you wish setuptools to handle installation for you, the following should suffice. For now, download the source and run:
 
     $ python setup.py install
 
-This will install the package for you, so it can be launched with 'generatr' from the command line.
+You may or may not required sudo, it depends on your system. This will install the package for you, so it can be launched with 'generatr' from the command line.
 Eventually, the package will be uploaded onto PIP so that you can install directly from a terminal.
+
+Hardware Requirements
+=====================
+
+Nothing spectacular, any computer should run it fine. However, if you desire to generate a reference with a large amount of repeat units and/or loci, available
+system memory will be a bottleneck.
 
 Usage
 =====
