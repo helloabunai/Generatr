@@ -13,7 +13,7 @@ setup(
     name='RefGeneratr',
 
     # https://packaging.python.org/en/latest/single_source_version.html
-    version='0.0.1',
+    version='0.1.1',
 
     description='Dynamic multi-loci/mutli-repeat tract microsatellite sequence generator.',
     long_description=long_description,
