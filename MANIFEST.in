@@ -1,0 +1,4 @@
+include MANIFEST.in
+include README.md
+include generatr/dtdvalidate/example_input.xml
+include generatr/dtdvalidate/xml_rules.dtd

@@ -1,29 +1,10 @@
 <?xml version="1.0"?>
 <data>
-
-    <!-- Provide your desired repeat range/loci information here.
-     Follow the example input in the documentation if you are unsure.-->
-
-    <loci label="test_loci_one">
-        <input type="fiveprime" flank="AAAAAAAAAAA"/>
-        <input type="repeat_region" order="1" unit="CAG" start="1" end="5"/>
-        <input type="intervening" sequence="TTTTTTTTTT" prior="1"/>
-        <input type="repeat_region" order="2" unit="CCG" start="1" end="5"/>
-        <input type="threeprime" flank="GGGGGGGGGGG"/>
+    <loci label="example_loci_one">
+        <input type="fiveprime" flank="GCGACCCTGGAAAAGCTGATGAAGGCCTTCGAGTCCCTCAAGTCCTTC"/>
+        <input type="repeat_region" order="1" unit="CAG" start="1" end="100"/>
+        <input type="intervening" sequence="CAACAGCCGCCA" prior="1"/>
+        <input type="repeat_region" order="2" unit="CCG" start="1" end="20"/>
+        <input type="threeprime" flank="CCTCCTCAGCTTCCTCAGCCGCCGCCGCAGGCACAGCCGCTGCT"/>
     </loci>
-
-    <loci label="test_loci_two">
-        <input type="fiveprime" flank="CCCC"/>
-        <input type="repeat_region" order="1" unit="CTG" start="1" end="200"/>
-        <input type="intervening" sequence="TTTTTTTTTT" prior="1"/>
-        <input type="repeat_region" order="2" unit="GGTTA" start="1" end="20"/>
-        <input type="intervening" sequence="TTTTTTTTTT" prior="2"/>
-        <input type="repeat_region" order="3" unit="CCC" start="1" end="5"/>
-        <input type="threeprime" flank="TTTTT"/>
-    </loci>
-
-    <!-- End of information !! Ensure all desired information is
-     represented properly above this line -->
-
 </data>
-
