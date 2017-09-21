@@ -30,7 +30,7 @@ class Generatr:
 		self.parser = argparse.ArgumentParser(prog='generatr',description='RefGeneratr: Dynamic multi-loci/mutli-repeat tract microsatellite sequence generator.')
 		self.parser.add_argument('-i','--input',help='Input data. Path to input XML document with desired sequence information.',nargs=1,required=True)
 		self.parser.add_argument('-o','--output',help='Output path. Specify a directory wherein your *.fa reference will be saved.',nargs=1,required=True)
-		self.parser.add_argument('-s','--silent',help='Only outputs repeat size on each contig entry in the reference (does not specify repeat unit, integer only)')
+		self.parser.add_argument('-s','--silent',help='Only outputs repeat size on each contig entry in the reference (does not specify repeat unit, integer only)',action='store_true')
 		self.parser.add_argument('-v','--verbose',help='Verbose mode. Enables terminal user feedback.',action='store_true')
 		self.args = self.parser.parse_args()
 
