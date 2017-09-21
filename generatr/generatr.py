@@ -30,6 +30,7 @@ class Generatr:
 		self.parser = argparse.ArgumentParser(prog='generatr',description='RefGeneratr: Dynamic multi-loci/mutli-repeat tract microsatellite sequence generator.')
 		self.parser.add_argument('-i','--input',help='Input data. Path to input XML document with desired sequence information.',nargs=1,required=True)
 		self.parser.add_argument('-o','--output',help='Output path. Specify a directory wherein your *.fa reference will be saved.',nargs=1,required=True)
+		self.parser.add_argument('-s','--silent',help='Only outputs repeat size on each contig entry in the reference (does not specify repeat unit, integer only)')
 		self.parser.add_argument('-v','--verbose',help='Verbose mode. Enables terminal user feedback.',action='store_true')
 		self.args = self.parser.parse_args()
 
@@ -37,6 +38,7 @@ class Generatr:
 		## Sets up input directories and verbose mode if requested
 		self.input_directory = self.args.input[0]
 		self.output_directory = self.args.output[0]
+		self.silent_flag = self.args.silent[0]
 		if self.args.verbose:
 			log.basicConfig(level=log.DEBUG, format="%(message)s")
 
@@ -174,8 +176,7 @@ class Generatr:
 
 		return locus_dictionary
 
-	@staticmethod
-	def generate_loci_reference(locus_dictionary):
+	def generate_loci_reference(self, locus_dictionary):
 
 		##
 		## Parameters for the current locus
@@ -239,7 +240,10 @@ class Generatr:
 				##
 				## A label anchor appended to the given label
 				## conveying the specified information for the current reference
-				haplotype_label += '_' + repeat_unit + str(num_times)
+				if not self.silent_flag:
+					haplotype_label += '_' + repeat_unit + str(num_times)
+				else:
+					haplotype_label += '_' + str(num_times)
 				i += 1
 
 			##
