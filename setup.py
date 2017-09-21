@@ -11,7 +11,7 @@ with open(path.join(here, '', 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='generatr',
-    version='0.25',
+    version='0.251',
     description='Dynamic multi-loci/mutli-repeat tract microsatellite sequence generator.',
     long_description=long_description,
     url='https://github.com/helloabunai/RefGeneratr',
