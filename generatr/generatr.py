@@ -38,7 +38,7 @@ class Generatr:
 		## Sets up input directories and verbose mode if requested
 		self.input_directory = self.args.input[0]
 		self.output_directory = self.args.output[0]
-		self.silent_flag = self.args.silent[0]
+		self.silent_flag = self.args.silent
 		if self.args.verbose:
 			log.basicConfig(level=log.DEBUG, format="%(message)s")
 
