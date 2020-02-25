@@ -1,5 +1,5 @@
 RefGeneratr: Dynamic multi-loci/multi-repeat tract microsatellite reference sequence generator
-=========================================================
+==============================================================================================
 RefGeneratr (generatr) is a python script/package which generates a reference genetic sequence (*.fasta) for use in sequence alignment.
 Microsatellite repeat regions can vary in scope and loci count, so this software has the ability to dynamically handle an undetermined
 amount of repeat regions within each loci, with intervening sequences if desired. Endusers can specify as many regions/loci as desired, through
