@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<data>
+    <loci label="example_loci_one">
+        <input type="fiveprime" flank="GCGACCCTGGAAAAGCTGATGAAGGCCTTCGAGTCCCTCAAGTCCTTC"/>
+        <input type="repeat_region" order="1" unit="CAG" start="1" end="100"/>
+        <input type="intervening" sequence="CAACAGCCGCCA" prior="1"/>
+        <input type="repeat_region" order="2" unit="CCG" start="1" end="20"/>
+        <input type="threeprime" flank="CCTCCTCAGCTTCCTCAGCCGCCGCCGCAGGCACAGCCGCTGCT"/>
+    </loci>
+</data>

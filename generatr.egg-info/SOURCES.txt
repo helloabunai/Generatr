@@ -1,0 +1,17 @@
+MANIFEST.in
+README.md
+setup.cfg
+setup.py
+generatr/__init__.py
+generatr/__main__.py
+generatr/generatr.py
+generatr.egg-info/PKG-INFO
+generatr.egg-info/SOURCES.txt
+generatr.egg-info/dependency_links.txt
+generatr.egg-info/entry_points.txt
+generatr.egg-info/requires.txt
+generatr.egg-info/top_level.txt
+generatr/dtdvalidate/__init__.py
+generatr/dtdvalidate/example_input.xml
+generatr/dtdvalidate/validation.py
+generatr/dtdvalidate/xml_rules.dtd
