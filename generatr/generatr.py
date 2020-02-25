@@ -258,7 +258,8 @@ class Generatr:
 	def temporary_file_creation(self, locus_string):
 
 		temp_loci_file = tempfile.NamedTemporaryFile(delete=False)
-		temp_loci_file.write(locus_string)
+		binary_string = locus_string.encode()
+		temp_loci_file.write(binary_string)
 		temp_loci_file.flush()
 		self.temp_loci_files.append(temp_loci_file)
 
@@ -267,7 +268,8 @@ class Generatr:
 		with open(self.output_directory, 'w') as outfile:
 			for loci in self.temp_loci_files:
 				loci.seek(0)
-				outfile.write(loci.read())
+				binary_loci = loci.read().decode()
+				outfile.write(binary_loci)
 				outfile.write('\n')
 				loci.close()
 		outfile.close()

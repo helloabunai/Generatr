@@ -11,7 +11,8 @@ with open(path.join(here, '', 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='generatr',
-    version='0.252',
+    version='0.3',
+    python_requires='>3.7'
     description='Dynamic multi-loci/mutli-repeat tract microsatellite sequence generator.',
     long_description=long_description,
     url='https://github.com/helloabunai/RefGeneratr',
@@ -19,7 +20,7 @@ setup(
     author_email='alastair.maxwell@glasgow.ac.uk',
     license='GPLv3',
     classifiers=[],
-    keywords='XML FASTA Genetic-references Bioinformatics Dat-analysis',
+    keywords='XML FASTA Genetic-references Bioinformatics Data-analysis',
     packages=find_packages(exclude=['input',
 									'lib',
 									'generatr.egg-info',
